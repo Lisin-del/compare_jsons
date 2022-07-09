@@ -14,17 +14,15 @@
             Then you need to push the "compare" button. After that we will be able to see a result of comparison.    
         </p>
 
-        <form method="POST">
+        <form method="POST" action="/upload" enctype="multipart/form-data">
            <div class="input-group">
-                <input type="file" class="form-control" id="inputGroupFile01" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon01">Upload_file_1</button>
+                <input name="file1" type="file" class="form-control" id="inputGroupFile01" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
             </div>
 
             <div class="input-group">
-                <input type="file" class="form-control" id="inputGroupFile02" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon02">Upload_file_2</button>
+                <input name="file2" type="file" class="form-control" id="inputGroupFile02" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
             </div>
-            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Compare</button> 
+            <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon03">Compare</button>
         </form>
         
     </div>
