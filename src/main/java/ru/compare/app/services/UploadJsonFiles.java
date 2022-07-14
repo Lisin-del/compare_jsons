@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,7 +13,12 @@ import java.util.UUID;
 
 @Service
 public class UploadJsonFiles extends UploadFiles{
-
+    /**
+     * Uploads json files
+     * @param files uploaded by users
+     * @return boolean if files are uploaded successfully
+     * @throws IOException
+     */
     @Override
     public boolean uploadFiles(MultipartFile... files) throws IOException {
         boolean flagExisting = true;
@@ -31,5 +37,20 @@ public class UploadJsonFiles extends UploadFiles{
             }
         }
         return flagExisting;
+    }
+
+    /**
+     * Clears the directory for uploads
+     */
+    @Override
+    public void clearDirectory() {
+        File dir = new File("uploaded_files");
+        File[] listFiles = dir.listFiles();
+
+        if(listFiles.length != 0) {
+            for(File file : listFiles) {
+                file.delete();
+            }
+        }
     }
 }

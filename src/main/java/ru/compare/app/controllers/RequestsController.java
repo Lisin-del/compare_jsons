@@ -37,7 +37,13 @@ public class RequestsController {
     ) {
         UploadFilesInter uploadJson = App.context.getBean("uploadJsonFiles", UploadJsonFiles.class);
         try {
-            uploadJson.uploadFiles(file1, file2);
+            uploadJson.clearDirectory();
+            if(!file1.isEmpty() && !file2.isEmpty()) {
+                uploadJson.uploadFiles(file1, file2);
+            }
+            else {
+                return "ftlh/ErrorEmptyFiles";
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

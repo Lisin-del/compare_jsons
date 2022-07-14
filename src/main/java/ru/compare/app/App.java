@@ -10,6 +10,7 @@ public class App {
         SpringApplication.run(App.class, args);
     }
 
+    // context for the Application
     public static AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
             "ru.compare.app.controllers",
             "ru.compare.app.models",
