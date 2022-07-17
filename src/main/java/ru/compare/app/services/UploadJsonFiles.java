@@ -12,19 +12,14 @@ import java.nio.file.Paths;
 import java.util.UUID;
 
 @Service
-public class UploadJsonFiles extends UploadFiles{
-    /**
-     * Uploads json files
-     * @param files uploaded by users
-     * @return boolean if files are uploaded successfully
-     * @throws IOException
-     */
+public class UploadJsonFiles implements UploadFilesInter {
+
     @Override
     public boolean uploadFiles(MultipartFile... files) throws IOException {
         boolean flagExisting = true;
 
         if (Files.isDirectory(Paths.get("uploaded_files"))) {
-            for(MultipartFile file : files) {
+            for (MultipartFile file : files) {
                 // generate unique name for uploaded file
                 Path path = Paths.get("uploaded_files/" + UUID.randomUUID() + ".json");
 
@@ -39,16 +34,13 @@ public class UploadJsonFiles extends UploadFiles{
         return flagExisting;
     }
 
-    /**
-     * Clears the directory for uploads
-     */
     @Override
     public void clearDirectory() {
         File dir = new File("uploaded_files");
         File[] listFiles = dir.listFiles();
 
-        if(listFiles.length != 0) {
-            for(File file : listFiles) {
+        if (listFiles.length != 0) {
+            for (File file : listFiles) {
                 file.delete();
             }
         }
