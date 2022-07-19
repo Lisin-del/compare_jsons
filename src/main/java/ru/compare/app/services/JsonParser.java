@@ -1,11 +1,9 @@
 package ru.compare.app.services;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import ru.compare.app.models.ServerConfigModel;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,7 +26,7 @@ public class JsonParser {
         List<Path> jsonFiles = Files.list(Paths.get("uploaded_files")).toList();
 
         for (int i = 0; i < 2; ++i) {
-            models.put("file" + i, mapper.readValue(Files.readString(jsonFiles.get(i)), ServerConfigModel.class));
+            models.put("model" + i, mapper.readValue(Files.readString(jsonFiles.get(i)), ServerConfigModel.class));
         }
         return models;
     }

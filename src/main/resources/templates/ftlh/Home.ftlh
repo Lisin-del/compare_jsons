@@ -14,7 +14,7 @@
             Then you need to push the "compare" button. After that we will be able to see a result of comparison.    
         </p>
 
-        <form method="POST" action="/upload" enctype="multipart/form-data">
+        <form method="POST" action="/compare" enctype="multipart/form-data">
            <div class="input-group">
                 <input name="file1" type="file" class="form-control" id="inputGroupFile01" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
             </div>

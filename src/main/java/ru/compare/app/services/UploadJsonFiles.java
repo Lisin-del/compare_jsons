@@ -1,6 +1,5 @@
 package ru.compare.app.services;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,18 +17,13 @@ public class UploadJsonFiles implements UploadFilesInter {
     public boolean uploadFiles(MultipartFile... files) throws IOException {
         boolean flagExisting = true;
 
-        if (Files.isDirectory(Paths.get("uploaded_files"))) {
-            for (MultipartFile file : files) {
-                // generate unique name for uploaded file
-                Path path = Paths.get("uploaded_files/" + UUID.randomUUID() + ".json");
-
-                Files.createFile(path);
-                file.transferTo(path);
-
-                if (!Files.exists(path)) {
-                    return false;
-                }
-            }
+        Path uploaded_files = Paths.get("uploaded_files");
+        if (Files.isDirectory(uploaded_files)) {
+            moveMultipartFiles(files);
+        }
+        else {
+            Files.createDirectory(uploaded_files);
+            moveMultipartFiles(files);
         }
         return flagExisting;
     }
@@ -43,6 +37,15 @@ public class UploadJsonFiles implements UploadFilesInter {
             for (File file : listFiles) {
                 file.delete();
             }
+        }
+    }
+
+    private void moveMultipartFiles(MultipartFile...files) throws IOException {
+        for (MultipartFile file : files) {
+            // generate unique name for uploaded file
+            Path path = Paths.get("uploaded_files/" + UUID.randomUUID() + ".json");
+            Files.createFile(path);
+            file.transferTo(path);
         }
     }
 }
