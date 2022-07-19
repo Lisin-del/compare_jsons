@@ -34,7 +34,7 @@
                 </p>
             </div>
             <div class="col">
-                                <p>
+                <p>
                     "server": "${serverName}",<br>
                     "ip": "${serverIp}", <br>
                     "domain": ${domainName}, <br>
