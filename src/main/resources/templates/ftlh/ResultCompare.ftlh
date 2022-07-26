@@ -19,34 +19,36 @@
         <div class="row">
             <div class="col">
                 <p>
-                    "server": "${serverName}",<br>
-                    "ip": "${serverIp}", <br>
-                    "domain": ${domainName}, <br>
-                    <#list profiles as profile>
-                            "profiles": [ <br>
-                                    { <br>
-                                        "name": ${profile.getName()}, <br>
-                                        "driver": ${profile.driver}, <br>
-                                        "id": ${profile.id} <br>
-                                    } <br>
-                            ] <br>
-                    </#list>
+                    <span style="background-color: ${serverConfigModel.getServerColor()};">"server": "${serverConfigModel.getServer()}",</span><br>
+                    <span style="background-color: ${serverConfigModel.getServerIpColor()};">"ip": "${serverConfigModel.getIp()}",</span><br>
+                    <span style="background-color: ${serverConfigModel.getDomainColor()};">"domain": ${serverConfigModel.getDomain()},</span><br>
+                    "profiles": 
+                        [<br>
+                            <#list profiles as profile>
+                                { <br>
+                                    <span style="background-color: ${profile.getNameColor()};">"name": ${profile.getName()},</span><br>
+                                    <span style="background-color: ${profile.getDriverColor()};">"driver": ${profile.getDriver()},</span><br>
+                                    <span style="background-color: ${profile.getIdColor()};">"id": ${profile.getId()}</span><br>
+                                } <br>
+                            </#list>
+                        ]<br>
                 </p>
             </div>
             <div class="col">
                 <p>
-                    "server": "${serverName}",<br>
-                    "ip": "${serverIp}", <br>
-                    "domain": ${domainName}, <br>
-                    <#list profiles as profile>
-                            "profiles": [ <br>
-                                    { <br>
-                                        "name": ${profile.getName()}, <br>
-                                        "driver": ${profile.driver}, <br>
-                                        "id": ${profile.id} <br>
-                                    } <br>
-                            ] <br>
-                    </#list>
+                    <span style="background-color: ${serverConfigModel1.getServerColor()};">"server": "${serverConfigModel1.getServer()}",</span><br>
+                    <span style="background-color: ${serverConfigModel1.getServerIpColor()};">"ip": "${serverConfigModel1.getIp()}",</span><br>
+                    <span style="background-color: ${serverConfigModel1.getDomainColor()};">"domain": ${serverConfigModel1.getDomain()},</span><br>
+                    "profiles": 
+                        [<br>
+                            <#list profiles1 as profile1>
+                                { <br>
+                                    <span style="background-color: ${profile1.getNameColor()};">"name": ${profile1.getName()},</span><br>
+                                    <span style="background-color: ${profile1.getDriverColor()};">"driver": ${profile1.getDriver()},</span><br>
+                                    <span style="background-color: ${profile1.getIdColor()};">"id": ${profile1.getId()}</span><br>
+                                } <br>
+                            </#list>
+                        ]<br>
                 </p>
             </div>
         </div>

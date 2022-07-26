@@ -1,5 +1,6 @@
 package ru.compare.app.services;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import ru.compare.app.models.ServerConfigModel;
@@ -26,7 +27,13 @@ public class JsonParser {
         List<Path> jsonFiles = Files.list(Paths.get("uploaded_files")).toList();
 
         for (int i = 0; i < 2; ++i) {
-            models.put("model" + i, mapper.readValue(Files.readString(jsonFiles.get(i)), ServerConfigModel.class));
+            ServerConfigModel model = mapper.readValue(Files.readString(jsonFiles.get(i)), ServerConfigModel.class);
+            if (!model.getIp().isEmpty() && !model.getServer().isEmpty() && !model.getDomain().isEmpty() && !model.getProfiles().isEmpty()) {
+                models.put("model" + i, model);
+            }
+            else {
+                //TODO: handle this case
+            }
         }
         return models;
     }

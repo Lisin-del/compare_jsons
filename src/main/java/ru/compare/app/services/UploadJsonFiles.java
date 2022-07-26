@@ -19,10 +19,12 @@ public class UploadJsonFiles implements UploadFilesInter {
 
         Path uploaded_files = Paths.get("uploaded_files");
         if (Files.isDirectory(uploaded_files)) {
+            clearDirectory();
             moveMultipartFiles(files);
         }
         else {
             Files.createDirectory(uploaded_files);
+            clearDirectory();
             moveMultipartFiles(files);
         }
         return flagExisting;
