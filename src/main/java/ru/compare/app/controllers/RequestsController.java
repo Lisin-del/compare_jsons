@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import ru.compare.app.models.ServerConfigModel;
 import ru.compare.app.services.JsonComparator;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Controller
 public class RequestsController {
@@ -58,6 +56,7 @@ public class RequestsController {
             }
         } catch (IOException e) {
             System.out.println("Failed uploading or parsing json files: " + e.getMessage());
+            return "ftlh/ErrorEmptyFiles";
         }
         return "ftlh/ResultCompare";
     }

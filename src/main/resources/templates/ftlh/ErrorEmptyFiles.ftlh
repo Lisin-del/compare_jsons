@@ -9,9 +9,6 @@
     <div class="container">
         <h3>Your files have not been uploaded!</h3>
         <h5>Causes: there is an empty file or file doesn't exist</h5>
-        <#list tests as test>
-            <p style="color: ${color0}">${test}${test?index}</p>
-        </#list>
     </div>
 </body>
 </html>

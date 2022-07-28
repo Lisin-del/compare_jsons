@@ -1,20 +1,15 @@
 package ru.compare.app.services;
 
-import com.sun.java.accessibility.util.EventID;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ConcurrentModel;
-import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import ru.compare.app.models.ProfileModel;
 import ru.compare.app.models.ServerConfigModel;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class JsonComparator {
@@ -41,12 +36,13 @@ public class JsonComparator {
         compareModels();
     }
 
+    /**
+     * Compares model from the Map models.
+     * Adds colors to each model after the comparison.
+     */
     public void compareModels() {
         ServerConfigModel serverConfigModel = models.get("model0");
         ServerConfigModel serverConfigModel1 = models.get("model1");
-
-        Model viewModel = new ConcurrentModel();
-
 
         if (!serverConfigModel.getServer().equals(serverConfigModel1.getServer())) {
             serverConfigModel.setServerColor(redColor);
@@ -77,12 +73,16 @@ public class JsonComparator {
         compareProfiles(profiles, profiles1, redColor);
         compareProfiles(profiles1, profiles, greenColor);
 
-
         models.put("model0", serverConfigModel);
         models.put("model1", serverConfigModel1);
-
     }
 
+    /**
+     * Compares profiles.
+     * @param profiles list of profiles
+     * @param profiles1 list of profiles
+     * @param color color for a profile
+     */
     private void compareProfiles(List<ProfileModel> profiles, List<ProfileModel> profiles1, String color) {
         for (ProfileModel profile : profiles) {
             boolean flagFound = false;
