@@ -52,6 +52,12 @@
                 </p>
             </div>
         </div>
+
+        <div class="row">
+            <form method="GET" action="/">
+                <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon03">Back home</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
