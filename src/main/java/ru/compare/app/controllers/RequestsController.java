@@ -27,7 +27,7 @@ public class RequestsController {
     }
 
     /**
-     * Gets and handles POST requests /upload
+     * Gets and handles POST requests /compare
      * @param file1
      * @param file2
      * @return HTML page
