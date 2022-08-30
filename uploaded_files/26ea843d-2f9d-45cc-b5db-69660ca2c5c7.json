@@ -1,0 +1,23 @@
+{
+    "server": "rbm_2",
+    "ip": "128.13.164.2",
+    "domain": "rbm.com",
+    "profiles":
+    [
+        {
+            "name": "custom_profile",
+            "driver": "oracle",
+            "id": "b56e9f00-319c-4285-9011-e28d372c7fb9"
+        },
+        {
+            "name": "custom_profile_rm",
+            "driver": "oracle",
+            "id": "9b2b63cd-baf2-431d-a654-e362746c8c7b"
+        },
+        {
+            "name": "custom_profile_rm_test",
+            "driver": "oracle",
+            "id": "95a1e7ce-798b-4027-b513-c5f5c20f4714"
+        }
+    ]
+}
